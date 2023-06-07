@@ -10,7 +10,7 @@ dealer_card = RandomCardGenerator.call
 player_first_card = RandomCardGenerator.call
 player_second_card = RandomCardGenerator.call
 
-correct_move = ResolveMove.new.call(dealer_card:, player_first_card:, player_second_card:).to_s
+correct_move = ResolveMove.new.call(dealer_card:, player_cards: [player_first_card, player_second_card]).to_s
 
 puts "Dealer has: #{dealer_card}"
 puts "You have: #{player_first_card}, #{player_second_card}"

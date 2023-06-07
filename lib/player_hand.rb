@@ -1,18 +1,17 @@
 class PlayerHand
-  attr_reader :first_card, :second_card
+  attr_reader :cards
 
-  def initialize(first_card:, second_card:)
-    @first_card = first_card
-    @second_card = second_card
+  def initialize(cards: [])
+    @cards = cards
   end
 
   def value
-    convert_card_to_value(first_card) + convert_card_to_value(second_card)
+    cards.inject(0) {|sum, card| sum += convert_card_to_value(card)}
   end
 
   def type
     return :split if hand_split?
-    return :soft if card_is_ace?(first_card) || card_is_ace?(second_card)
+    return :soft if cards.any?{ card_is_ace?(_1) }
 
     :hard
   end
@@ -34,6 +33,6 @@ class PlayerHand
   end
 
   def hand_split?
-    first_card == second_card
+    cards[0] == cards[1]
   end
 end

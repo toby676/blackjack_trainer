@@ -10,8 +10,8 @@ class ResolveMove
     @split_trainer = split_trainer
   end
 
-  def call(dealer_card:, player_first_card:, player_second_card:)
-    player_hand = PlayerHand.new(first_card: player_first_card, second_card: player_second_card)
+  def call(dealer_card:, player_cards:)
+    player_hand = PlayerHand.new(cards: player_cards)
 
     trainer = find_trainer(player_hand_type: player_hand.type).new(dealer_card: dealer_card)
     trainer.call(player_total: player_hand.value)
