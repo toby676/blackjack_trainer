@@ -16,6 +16,8 @@ class PlayerHand
     :hard
   end
 
+  private
+
   def convert_card_to_value(card)
     return 1 if card_is_ace?(card) && hand_split?
     return 11 if card_is_ace?(card)
