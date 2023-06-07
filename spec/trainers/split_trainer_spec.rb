@@ -1,4 +1,4 @@
-require 'split_trainer'
+require 'trainers/split_trainer'
 
 RSpec.describe SplitTrainer do
   subject(:split_trainer) { described_class.new(dealer_card:) }

@@ -1,4 +1,4 @@
-require 'base_trainer'
+require_relative 'base_trainer'
 
 class SoftTrainer < BaseTrainer
   private

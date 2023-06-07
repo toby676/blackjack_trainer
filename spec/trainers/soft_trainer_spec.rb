@@ -1,4 +1,4 @@
-require 'soft_trainer'
+require 'trainers/soft_trainer'
 
 RSpec.describe SoftTrainer do
   subject(:soft_trainer) { described_class.new(dealer_card:) }
