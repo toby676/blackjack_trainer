@@ -1,7 +1,7 @@
-require 'player_hand'
-require 'trainers/hard_trainer'
-require 'trainers/soft_trainer'
-require 'trainers/split_trainer'
+require_relative 'player_hand'
+require_relative 'trainers/hard_trainer'
+require_relative 'trainers/soft_trainer'
+require_relative 'trainers/split_trainer'
 
 class ResolveMove
   def initialize(hard_trainer: HardTrainer, soft_trainer: SoftTrainer, split_trainer: SplitTrainer)
