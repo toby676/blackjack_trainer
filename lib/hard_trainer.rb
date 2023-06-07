@@ -1,5 +1,13 @@
 class HardTrainer
-  def call(player:, dealer:)
+  def initialize(dealer:)
+    @dealer = dealer
+  end
+
+  def call(player:)
     :hit
   end
+
+  private
+
+  attr_reader :dealer
 end

@@ -1,7 +1,11 @@
 require 'hard_trainer'
 
 RSpec.describe HardTrainer do
-  it 'returns hit if player has 4 and dealer has 2' do
-    expect(HardTrainer.new.call(player:4, dealer: 2)).to eq(:hit)
+  context 'dealer has 2' do
+    subject(:dealer) { HardTrainer.new(dealer: 2) }
+
+    it 'returns hit if player has 4' do
+      expect(dealer.call(player:4)).to eq(:hit)
+    end
   end
 end
