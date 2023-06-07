@@ -21,7 +21,7 @@ class SplitTrainer < BaseTrainer
         dealer: [8,9], hit: [4,6,8,12,14], split: [2,16,18], double: [10], stand: [20]
       },
       {
-        dealer: [10], hit: [4,6,8,10,12,14,16], split: [2], double: [], stand: [18,20]
+        dealer: [10, 'J', 'Q', 'K'], hit: [4,6,8,10,12,14,16], split: [2], double: [], stand: [18,20]
       },
       {
         dealer: ['A'], hit: [4,6,8,10,12,14,16,2], split: [], double: [], stand: [18,20]

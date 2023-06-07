@@ -24,7 +24,7 @@ class SoftTrainer < BaseTrainer
         dealer: [7,8], hit: (13..17), double: [], double_or_stand: [], stand: (18..21)
       },
       {
-        dealer: [9,10,'A'], hit: (13..18), double: [], double_or_stand: [], stand: (19..21)
+        dealer: [9,10,'J','Q','K','A'], hit: (13..18), double: [], double_or_stand: [], stand: (19..21)
       }
     ]
   end

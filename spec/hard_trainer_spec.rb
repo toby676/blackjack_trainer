@@ -228,6 +228,81 @@ RSpec.describe HardTrainer do
     end
   end
 
+  context 'dealer has J' do
+    let(:dealer_card) { 'J' }
+
+    player_hit_hands = (4..10).to_a + (12..16).to_a
+    player_hit_hands.each do |hand|
+      it "returns hit if player has #{hand}" do
+        expect(hard_trainer.call(player_total: hand)).to eq(:hit)
+      end
+    end
+
+    player_double_hands = [11]
+    player_double_hands.each do |hand|
+      it "returns double if player has #{hand}" do
+        expect(hard_trainer.call(player_total: hand)).to eq(:double)
+      end
+    end
+
+    player_stand_hands = (17..21)
+    player_stand_hands.each do |hand|
+      it "returns stand if player has #{hand}" do
+        expect(hard_trainer.call(player_total: hand)).to eq(:stand)
+      end
+    end
+  end
+
+  context 'dealer has Q' do
+    let(:dealer_card) { 'Q' }
+
+    player_hit_hands = (4..10).to_a + (12..16).to_a
+    player_hit_hands.each do |hand|
+      it "returns hit if player has #{hand}" do
+        expect(hard_trainer.call(player_total: hand)).to eq(:hit)
+      end
+    end
+
+    player_double_hands = [11]
+    player_double_hands.each do |hand|
+      it "returns double if player has #{hand}" do
+        expect(hard_trainer.call(player_total: hand)).to eq(:double)
+      end
+    end
+
+    player_stand_hands = (17..21)
+    player_stand_hands.each do |hand|
+      it "returns stand if player has #{hand}" do
+        expect(hard_trainer.call(player_total: hand)).to eq(:stand)
+      end
+    end
+  end
+
+  context 'dealer has K' do
+    let(:dealer_card) { 'K' }
+
+    player_hit_hands = (4..10).to_a + (12..16).to_a
+    player_hit_hands.each do |hand|
+      it "returns hit if player has #{hand}" do
+        expect(hard_trainer.call(player_total: hand)).to eq(:hit)
+      end
+    end
+
+    player_double_hands = [11]
+    player_double_hands.each do |hand|
+      it "returns double if player has #{hand}" do
+        expect(hard_trainer.call(player_total: hand)).to eq(:double)
+      end
+    end
+
+    player_stand_hands = (17..21)
+    player_stand_hands.each do |hand|
+      it "returns stand if player has #{hand}" do
+        expect(hard_trainer.call(player_total: hand)).to eq(:stand)
+      end
+    end
+  end
+
   context 'dealer has A' do
     let(:dealer_card) { 'A' }
 

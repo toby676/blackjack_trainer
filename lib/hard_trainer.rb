@@ -18,7 +18,7 @@ class HardTrainer < BaseTrainer
         dealer: [7,8,9], hit: (4..9).to_a + (12..16).to_a, double: (10..11), stand: (17..21)
       },
       {
-        dealer: [10,'A'], hit: (4..10).to_a + (12..16).to_a, double: [11], stand: (17..21)
+        dealer: [10, 'J', 'Q', 'K','A'], hit: (4..10).to_a + (12..16).to_a, double: [11], stand: (17..21)
       }
     ]
   end
