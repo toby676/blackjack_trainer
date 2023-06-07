@@ -252,4 +252,20 @@ RSpec.describe HardTrainer do
       end
     end
   end
+
+  context 'unknown dealer card' do
+    let(:dealer_card) { 99 }
+
+    it "returns dealer_unknown if outside of dealer hands" do
+      expect(hard_trainer.call(player_total: 11)).to eq(:dealer_unknown)
+    end
+  end
+
+  context 'unknown player card' do
+    let(:dealer_card) { 5 }
+
+    it "returns player_unknown if outside of player hands" do
+      expect(hard_trainer.call(player_total: 99)).to eq(:player_unknown)
+    end
+  end
 end
