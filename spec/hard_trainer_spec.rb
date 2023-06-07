@@ -18,7 +18,7 @@ RSpec.describe HardTrainer do
       end
     end
 
-    player_stand_hands = (13..20)
+    player_stand_hands = (13..21)
     player_stand_hands.each do |hand|
       it "returns stand if player has #{hand}" do
         expect(hard_trainer.call(player_total: hand)).to eq(:stand)
@@ -36,14 +36,39 @@ RSpec.describe HardTrainer do
       end
     end
 
-    player_double_hands = [9,10,11]
+    player_double_hands = (9..11)
     player_double_hands.each do |hand|
       it "returns double if player has #{hand}" do
         expect(hard_trainer.call(player_total: hand)).to eq(:double)
       end
     end
 
-    player_stand_hands = (13..20)
+    player_stand_hands = (13..21)
+    player_stand_hands.each do |hand|
+      it "returns stand if player has #{hand}" do
+        expect(hard_trainer.call(player_total: hand)).to eq(:stand)
+      end
+    end
+  end
+
+  context 'dealer has 4' do
+    subject(:hard_trainer) { HardTrainer.new(dealer_card: 4) }
+
+    player_hit_hands = (4..8)
+    player_hit_hands.each do |hand|
+      it "returns hit if player has #{hand}" do
+        expect(hard_trainer.call(player_total: hand)).to eq(:hit)
+      end
+    end
+
+    player_double_hands = (9..11)
+    player_double_hands.each do |hand|
+      it "returns double if player has #{hand}" do
+        expect(hard_trainer.call(player_total: hand)).to eq(:double)
+      end
+    end
+
+    player_stand_hands = (12..21)
     player_stand_hands.each do |hand|
       it "returns stand if player has #{hand}" do
         expect(hard_trainer.call(player_total: hand)).to eq(:stand)
