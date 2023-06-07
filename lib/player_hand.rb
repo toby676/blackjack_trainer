@@ -20,12 +20,17 @@ class PlayerHand
   def convert_card_to_value(card)
     return 1 if card_is_ace?(card) && hand_split?
     return 11 if card_is_ace?(card)
+    return 10 if face_card?(card)
 
     card
   end
 
   def card_is_ace?(card)
     card == 'A'
+  end
+
+  def face_card?(card)
+    ['J', 'Q', 'K'].include?(card)
   end
 
   def hand_split?

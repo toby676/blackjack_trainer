@@ -34,6 +34,18 @@ RSpec.describe PlayerHand do
     it 'returns the value of the hand as 2 if two aces' do
       expect(player_hand.new(first_card: 'A', second_card: 'A').value).to eq(2)
     end
+
+    it 'handles J as 10' do
+      expect(player_hand.new(first_card: 'J', second_card: 2).value).to eq(12)
+    end
+
+    it 'handles Q as 10' do
+      expect(player_hand.new(first_card: 2, second_card: 'Q').value).to eq(12)
+    end
+
+    it 'handles K as 10' do
+      expect(player_hand.new(first_card: 'K', second_card: 2).value).to eq(12)
+    end
   end
 
   describe '.type' do
