@@ -2,6 +2,11 @@ require_relative 'random_card_generator'
 require_relative 'resolve_move'
 
 class PlayGame
+  def initialize(card_generator: RandomCardGenerator, move_resolver: ResolveMove.new)
+    @card_generator = card_generator
+    @move_resolver = move_resolver
+  end
+
   def call
     puts "Welcome to the black jack trainer!"
     puts "Please enter one of 'stand', 'hit', 'double', 'split', 'double_or_split' depending on the game situation"
@@ -12,13 +17,13 @@ class PlayGame
 
     plays.times do |i|
       puts "Turn #{i + 1}"
-      dealer_card = generate_card
-      player_first_card = generate_card
-      player_second_card = generate_card
+      dealer_card = card_generator.call
+      player_first_card = card_generator.call
+      player_second_card = card_generator.call
 
       player_cards = [player_first_card, player_second_card]
 
-      correct_move = resolve_move(dealer_card:, player_cards:)
+      correct_move = move_resolver.call(dealer_card:, player_cards:)
 
       puts "Dealer has: #{dealer_card}"
       puts "You have: #{player_cards}"
@@ -41,8 +46,8 @@ class PlayGame
           break
         in true if correct_move == :hit
           puts "Correct! - You have hit and the next card is drawn!"
-          player_cards << generate_card
-          correct_move = resolve_move(dealer_card:, player_cards:)
+          player_cards << card_generator.call
+          correct_move = move_resolver.call(dealer_card:, player_cards:)
           puts "Dealer has: #{dealer_card}"
           puts "You have: #{player_cards}"
           if correct_move == :bust
@@ -62,16 +67,10 @@ class PlayGame
 
   private
 
+  attr_reader :move_resolver, :card_generator
+
   def correct_try(try:, correct_move:)
     try == correct_move.to_s
-  end
-
-  def generate_card
-    RandomCardGenerator.call
-  end
-
-  def resolve_move(dealer_card:, player_cards:)
-    ResolveMove.new.call(dealer_card:, player_cards: player_cards)
   end
 end
 

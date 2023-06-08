@@ -4,14 +4,15 @@ require_relative 'trainers/soft_trainer'
 require_relative 'trainers/split_trainer'
 
 class ResolveMove
-  def initialize(hard_trainer: HardTrainer, soft_trainer: SoftTrainer, split_trainer: SplitTrainer)
+  def initialize(player_hand_class: PlayerHand, hard_trainer: HardTrainer, soft_trainer: SoftTrainer, split_trainer: SplitTrainer)
+    @player_hand_class = player_hand_class
     @hard_trainer = hard_trainer
     @soft_trainer = soft_trainer
     @split_trainer = split_trainer
   end
 
   def call(dealer_card:, player_cards:)
-    player_hand = PlayerHand.new(cards: player_cards)
+    player_hand = player_hand_class.new(cards: player_cards)
     return :bust if player_hand.type == :bust
 
     trainer = find_trainer(player_hand_type: player_hand.type).new(dealer_card: dealer_card)
@@ -20,7 +21,7 @@ class ResolveMove
 
   private
 
-  attr_reader :hard_trainer, :soft_trainer, :split_trainer
+  attr_reader :player_hand_class, :hard_trainer, :soft_trainer, :split_trainer
 
   def find_trainer(player_hand_type:)
     case player_hand_type
