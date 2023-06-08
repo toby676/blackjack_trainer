@@ -73,5 +73,3 @@ class PlayGame
     try == correct_move.to_s
   end
 end
-
-PlayGame.new.call
