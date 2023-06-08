@@ -44,6 +44,10 @@ class PlayGame
           puts "Correct! - You have picked double and the round is over!"
           puts "========="
           break
+        in true if correct_move == :double_or_stand
+          puts "Correct! - You have picked double_or_stand and the round is over!"
+          puts "========="
+          break
         in true if correct_move == :hit
           puts "Correct! - You have hit and the next card is drawn!"
           player_cards << card_generator.call

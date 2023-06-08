@@ -37,6 +37,17 @@ RSpec.describe PlayGame do
       }.to output(/Correct! - You have picked split and the round is over!/).to_stdout
     end
 
+    it 'returns Correct! - You have picked double_or_stand when correct move was double_or_stand and player picked double_or_stand' do
+      card_generator = class_double(RandomCardGenerator)
+      allow(card_generator).to receive(:call).and_return(4, 'A', 7)
+      game_instance = play_game.new(card_generator: card_generator)
+      allow(game_instance).to receive(:gets).and_return("1\n", "double_or_stand\n")
+
+      expect{
+        game_instance.call
+      }.to output(/Correct! - You have picked double_or_stand and the round is over!/).to_stdout
+    end
+
     it 'returns try again when correct move was stand and player picked hit' do
       card_generator = class_double(RandomCardGenerator)
       allow(card_generator).to receive(:call).and_return(7, 'A', 8)
