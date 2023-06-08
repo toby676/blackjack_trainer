@@ -125,8 +125,16 @@ RSpec.describe PlayerHand do
       expect(player_hand.new(cards: ['A', 2, 'A', 'A', 10]).type).to eq(:hard)
     end
 
-    it 'handles A, 2, A, 8, 10 as hard' do
-      expect(player_hand.new(cards: ['A', 2, 'A', 8, 10]).type).to eq(:hard)
+    it 'handles A, 2, A, 8, 10 as bust' do
+      expect(player_hand.new(cards: ['A', 2, 'A', 8, 10]).type).to eq(:bust)
+    end
+
+    it 'handles 10, J, 2, 2 as bust' do
+      expect(player_hand.new(cards: [10, 'J', 2, 2]).type).to eq(:bust)
+    end
+
+    it 'handles K, K, 2 as bust' do
+      expect(player_hand.new(cards: ['K', 'K', 2]).type).to eq(:bust)
     end
 
     it 'handles A, A, 8 as soft' do

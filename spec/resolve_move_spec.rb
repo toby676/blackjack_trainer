@@ -47,5 +47,14 @@ RSpec.describe ResolveMove do
 
       expect(result).to eq(:split)
     end
+
+    it 'returns bust when dealer card is 3, player first card is 10, player second card is 7, third player card is 7' do
+      result = resolve_move.new.call(
+        dealer_card: 3,
+        player_cards: [10, 7, 7]
+      )
+
+      expect(result).to eq(:bust)
+    end
   end
 end

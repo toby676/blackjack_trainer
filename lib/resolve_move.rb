@@ -12,6 +12,7 @@ class ResolveMove
 
   def call(dealer_card:, player_cards:)
     player_hand = PlayerHand.new(cards: player_cards)
+    return :bust if player_hand.type == :bust
 
     trainer = find_trainer(player_hand_type: player_hand.type).new(dealer_card: dealer_card)
     trainer.call(player_total: player_hand.value)

@@ -22,6 +22,7 @@ class PlayerHand
   end
 
   def type
+    return :bust if value > 21
     return :split if hand_split?
     return :soft if cards.any?{ card_is_ace?(_1) } && soft_hand(cards)
 
