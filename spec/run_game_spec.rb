@@ -1,7 +1,7 @@
 require 'resolve_move'
-require 'play_game'
+require 'run_game'
 
-RSpec.describe PlayGame do
+RSpec.describe RunGame do
   subject(:play_game) { described_class }
   describe '#call' do
     it 'returns Correct! - You have picked stand when correct move was stand and player picked stand' do

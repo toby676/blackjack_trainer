@@ -1,7 +1,7 @@
 require_relative 'random_card_generator'
 require_relative 'resolve_move'
 
-class PlayGame
+class RunGame
   def initialize(card_generator: RandomCardGenerator, move_resolver: ResolveMove.new)
     @card_generator = card_generator
     @move_resolver = move_resolver
